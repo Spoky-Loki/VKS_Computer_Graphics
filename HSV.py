@@ -119,9 +119,9 @@ def fromRGBtoHSV(image_rgb):
     return res
 
 
-h_value = 150.0
-s_value = 0.5
-v_value = 0.5
+h_value = 0.0
+s_value = 0.0
+v_value = 0.0
 
 filename = "ФРУКТЫ.jpg"
 
@@ -140,7 +140,7 @@ root.geometry(str(new_width + 200) + "x" + str(new_height + 20))
 
 img = ImageTk.PhotoImage(small_image)
 panel = Label(root, image=img)
-panel.pack(anchor=W)
+panel.pack(padx=10, pady=10, anchor=W)
 
 text_h = Label(root, text="H")
 text_h.place(x=new_width + 20, y=10 + new_height / 2 - 40, anchor=W, width=20, height=40)
@@ -149,12 +149,12 @@ h.place(x=new_width + 40, y=10 + new_height / 2 - 40, anchor=W, width=150, heigh
 
 text_s = Label(root, text="S")
 text_s.place(x=new_width + 20, y=10 + new_height / 2, anchor=W, width=20, height=40)
-s = Scale(root, from_=0.0, to=360.0, value=0.0, command=changeS)
+s = Scale(root, from_=0.0, to=1.0, value=0.0, command=changeS)
 s.place(x=new_width + 40, y=10 + new_height / 2, anchor=W, width=150, height=40)
 
 text_v = Label(root, text="V")
 text_v.place(x=new_width + 20, y=10 + new_height / 2 + 40, anchor=W, width=20, height=40)
-v = Scale(root, from_=0.0, to=360.0, value=0.0, command=changeV)
+v = Scale(root, from_=0.0, to=1.0, value=0.0, command=changeV)
 v.place(x=new_width + 40, y=10 + new_height / 2 + 40, anchor=W, width=150, height=40)
 
 button = Button(root, text="SAVE", command=saveImage)
