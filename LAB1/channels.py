@@ -50,4 +50,4 @@ def task2(name):
     channels(image1, image2, image3)
 
 
-task2("ФРУКТЫ.jpg")
+task2("test.jpg")
