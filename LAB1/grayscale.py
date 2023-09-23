@@ -1,3 +1,4 @@
+import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 
@@ -24,14 +25,33 @@ for i in range(width):
         pixel_map2[i, j] = (int(grayscale2), int(grayscale2), int(grayscale2))
         pixel_map_diff[i, j] = (int(abs(grayscale1 - grayscale2)), int(abs(grayscale1 - grayscale2)), int(abs(grayscale1 - grayscale2)))
 
-input_image1.show()
-input_image2.show()
-input_image_diff.show()
+#input_image1.show()
+#input_image2.show()
+#input_image_diff.show()
 
-histogram = input_image1.histogram()
-plt.hist(histogram, bins=256, color='blue', alpha=0.7)
+image_1 = np.array(input_image1)
+image_2 = np.array(input_image2)
+image_3 = np.array(input_image_diff)
+
+r = []
+g = []
+b = []
+indexes = []
+for i in range(0, 256):
+        r.append(0)
+        g.append(0)
+        b.append(0)
+        indexes.append(i)
+
+for i in range(0, height):
+    for j in range(0, width):
+        r[image_1[i][j][0]] += 1
+        g[image_2[i][j][1]] += 1
+        b[image_3[i][j][1]] += 1
+
+plt.plot(indexes, r)
 plt.show()
-
-histogram = input_image2.histogram()
-plt.hist(histogram, bins=256, color='blue', alpha=0.7)
+plt.plot(indexes, g)
+plt.show()
+plt.plot(indexes, b)
 plt.show()
